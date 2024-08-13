@@ -10,13 +10,13 @@
 
 :root {
   /* COLORS */
-  --BGCOLOR: #0F172A;
+  --BGCOLOR: #290f2a;
   --BORDER-COLOR: #FFF;
   --COLOR: #FFF;
   --ERROR: firebrick;
   --INACTIVE: lightgray;
   --LINK-COLOR: whitesmoke;
-  --LINK-HOVER: rgba(245, 245, 245, 0.9);
+  --LINK-HOVER: rgba(211, 211, 211, 0.9);
   --blog-BGCOLOR: hsla(240, 64%, 27%, 0.65);
   --STATUS-COMPLETE: limegreen;
   --STATUS-OPEN: firebrick;
@@ -346,6 +346,13 @@ tr {
   font-family: 'Arial', sans-serif;
 }
 
+.title_text{
+  font-size: 40px;
+  align-content:center;
+  justify-content: center;
+  display: flex;
+  padding: 15%;
+}
 @media screen and (max-width: 400px) {
   h1 {
     font-size: 1rem;
@@ -359,6 +366,8 @@ tr {
     font-size: 1.5rem;
   }
 }
+
+
 
 @media screen and (min-width: 768px) {
 
@@ -401,4 +410,9 @@ tr {
   .form__action-buttons {
     position: static;
   }
+}
+
+.inline-block {
+  display: inline-block;
+  margin: 0 10px;
 }

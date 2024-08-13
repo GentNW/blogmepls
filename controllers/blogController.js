@@ -1,4 +1,5 @@
 const Blog = require('../models/blog')
+const User = require('../models/user')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 
@@ -21,26 +22,25 @@ const getAllBlogs = asyncHandler (async (req,res) => {
 const createNewBlog = asyncHandler (async(req,res) => {
     //user's blog number variable should increase by 1 here
 
-    const { title , textContent} = req.body
-
+    const {user ,title , textContent} = req.body
     //Confirm Data
-    if(!title, !textContent)
+    if(!title, !textContent, !user)
     {
         return res.status(400).json({ message:'All fields are required' })
     }
 
-    //Check for Duplicate
+    //Checking for Duplicates
     const duplicate = await Blog.findOne({ title }).collation({locale:'en', strength: 2}).lean().exec()
 
     if(duplicate){
         return res.status(409).json({ message:'Duplicate title '})
     }
 
-    const userObject = { title, textContent}
+    const blogObject = {user, title, textContent}
 
 
-    //create & store new user
-    const blog = await Blog.create(userObject)
+    //create & store the new blog
+    const blog = await Blog.create(blogObject)
     if(blog){ //created
         res.status(201).json({message:`New blog ${title} created`})
     } else {

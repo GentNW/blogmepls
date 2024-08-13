@@ -6,7 +6,7 @@ import Login from '../features/auth/Login';
 import useAuth from '../hooks/useAuth';
 const DashFooter = () => {
 
-    const {username, status} = useAuth()
+    const {id,username, status} = useAuth()
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -30,7 +30,7 @@ const DashFooter = () => {
 
     let loginButton = null
 
-    if(pathname !== '/dash'){
+    /*if(pathname !== '/dash'){
         loginButton = (
             <button
                 className='dash-footer__button icon-button'
@@ -38,14 +38,14 @@ const DashFooter = () => {
                 onClick={onLoginClicked}
             />
         )
-    }
+    }*/
 
     const content= (
         <footer className="dash-footer">
             {goHomeButton}
             {loginButton}
             <p>Current User: {username}</p>
-            <p>Status:{status}</p>
+            <p>Status: {status}</p>
         </footer>
     )
     return content

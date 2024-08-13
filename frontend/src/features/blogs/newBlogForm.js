@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react"
 import { useAddNewBlogsMutation } from "./blogsApiSlice"
+import { useGetUsersQuery } from "../users/usersApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSave } from "@fortawesome/free-solid-svg-icons"
 
-const TITLE_REGEX = /^[A-z]{3,20}$/
-const TEXT_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+const TITLE_REGEX = /^[A-z ]{3,20}$/
+const TEXT_REGEX = /^[A-z0-9,.:!@#$%\n ]{3,1000}$/
 
 
-const NewBlogForm = () => {
+const NewBlogForm = ({users}) => {
     
     const [AddNewBlogs, {
         isLoading,
@@ -17,8 +18,10 @@ const NewBlogForm = () => {
         error
         }] = useAddNewBlogsMutation()
 
-    const navigate = useNavigate()
 
+    const navigate = useNavigate()
+    
+    
     const [userID,setUserID]= useState('')
     const [validUserID, setValidUserID] = useState(false)
     const [title, setTitle] = useState('')
@@ -56,8 +59,7 @@ const NewBlogForm = () => {
     const onSaveUserClicked = async (e) => {
         e.preventDefault()
         if(canSave){
-            
-            await AddNewBlogs({ title, textContent})
+            await AddNewBlogs({userID, title, textContent})
         }
     }
     const errClass = isError ? "errmsg" : "offscreen"
@@ -79,6 +81,7 @@ const NewBlogForm = () => {
                         >
                             <FontAwesomeIcon icon={faSave} />
                         </button>
+                        <p>{users._id}</p>
                     </div>
                 </div>
 

@@ -9,7 +9,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 const EditBlog = () => {
   const { id } = useParams()
 
-  const { username, isAdmin, isBlogger} = useAuth()
+  const { _id, isAdmin, isBlogger} = useAuth()
 
   const {blog} = useGetBlogsQuery("blogsList", {
     selectFromResult: ({ data }) => ({
@@ -28,8 +28,8 @@ const EditBlog = () => {
   }
 
   if(!isAdmin || !isBlogger){
-    if(blog.username !== username){
-      return <p className='errmsg'>No Access</p>
+    if(blog.user !== _id){
+      return <p className='errmsg'>No Access {blog.user} and blog is</p>
     }
   }
   const content = blog && users ? <EditBlogForm blog = { blog } users = {users}/> : <EditBlogForm>Loading...</EditBlogForm>

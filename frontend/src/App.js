@@ -22,6 +22,7 @@ function App() {
     <Routes>  
       <Route path="/" element={<Layout/>}>
         {/* Public Routes */} 
+        <Route path = "new" element= {<NewUserForm/>}/>
         <Route index element={<Public />}/>
         {/* Login page */}
         
@@ -34,7 +35,8 @@ function App() {
                 <Route path = "dash" element={<DashLayout />}>
                 useTitle('Home')
                   <Route index element={<Welcome />}/>
-
+                  {/* User creation */}
+                 
                   <Route element={<RequireAuth allowedRoles={[ROLES.Admin]}/>}>
                     {/* User display */}
                     <Route path = "users">
@@ -48,7 +50,7 @@ function App() {
 
                     </Route> {/* End user */}
                   </Route>
-                  <Route element={<RequireAuth allowedRoles={[ROLES.Admin,ROLES.Blogger]}/>}>
+                  <Route element={<RequireAuth allowedRoles={[ROLES.Blogger]}/>}>
                     {/* Blogs display */}
                     <Route path = "blogs">
                       

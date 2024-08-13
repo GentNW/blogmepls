@@ -38,12 +38,26 @@ const DashHeader = () => {
         console.error('Failed to logout', err);
     }
   }
+  
+
+
 
   const onNewBlogClicked=() => navigate('./blogs/new')
   const onNewUserClicked=() => navigate('./users/new')
   const onBlogsClicked=() => navigate('./blogs')
   const onUsersClicked=() => navigate('./users')
+  const onLoginClicked = () => navigate('/login')
 
+  let loginButton = null
+  if(pathname !== '/dash'){
+    loginButton = (
+        <button
+            className='dash-footer__button icon-button'
+            title="Login"
+            onClick={onLoginClicked}
+        />
+    )
+}
   let dashClass = null
   if(!DASH_REGEX.test(pathname) && !BLOGS_REGEX.test(pathname) && !USERS_REGEX.test(pathname)){
     dashClass = "dash-header__container--small"

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSave } from "@fortawesome/free-solid-svg-icons"
 
 const TITLE_REGEX = /^[A-z]{3,20}$/
-const TEXT_REGEX = /^[A-z0-9!@#$%\n]{3,1000}$/
+const TEXT_REGEX = /^[A-z0-9,.:!@#$%\n ]{3,1000}$/
 
 
 const EditBlogForm = ({blog}) => {
@@ -78,7 +78,7 @@ const EditBlogForm = ({blog}) => {
                         >
                             <FontAwesomeIcon icon={faSave} />
                         </button>
-                        <p>{validText.toString()}</p>
+                        {/*<p>{validText.toString()}</p>*/}
                     </div>
                 </div>
 
