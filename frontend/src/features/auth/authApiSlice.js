@@ -7,7 +7,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
             query: credentials => ({
                 url: '/auth',
                 method:'POST',
-                body: {...credentials}
+                body: {
+                    ...credentials
+                }
             })
         }),
         SendLogout: builder.mutation({
@@ -22,7 +24,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
                     dispatch(logOut())
                     setTimeout(() => {
                         dispatch(apiSlice.util.resetApiState())
-                    }, 3000);
+                    }, 1000);
                 } catch(err){
                     console.log(err)
                 }
@@ -33,9 +35,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 url:'/auth/refresh',
                 method:'GET',
             }),
-            async onQueryStarted(arg, {dispatch, queryFullfilled}){
+            async onQueryStarted(arg, {dispatch, queryFulfilled}){
                 try{
-                    const { data } = await queryFullfilled
+                    const { data } = await queryFulfilled
                     console.log(data)
                     const { accessToken } = data
                     dispatch(setCredentials({accessToken}))

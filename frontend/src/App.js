@@ -8,6 +8,7 @@ import BlogsList from './features/blogs/blogsList'
 import UsersList from './features/users/usersList'
 import EditUser from './features/users/editUser'
 import NewUserForm from './features/users/newUserForm'
+import RegisterUserForm from './features/register/registerForm'
 import EditBlog from './features/blogs/editBlog'
 import NewBlog from './features/blogs/newBlog'
 import Prefetch from './features/auth/prefetch'
@@ -22,7 +23,7 @@ function App() {
     <Routes>  
       <Route path="/" element={<Layout/>}>
         {/* Public Routes */} 
-        <Route path = "new" element= {<NewUserForm/>}/>
+        <Route path = "register" element= {<RegisterUserForm/>}/>
         <Route index element={<Public />}/>
         {/* Login page */}
         

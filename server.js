@@ -32,6 +32,7 @@ app.use('/',require('./routes/root'))
 //Authenticator
 app.use('/auth',require('./routes/authRoutes'))
 //User
+app.use('/register',require('./routes/registerRoute'))
 app.use('/users',require('./routes/userRoutes'))
 //Blog
 app.use('/blogs',require('./routes/blogRoutes'))

@@ -11,6 +11,8 @@ const Prefetch = () => {
     console.log('subscribing')
     Store.dispatch(blogsApiSlice.util.prefetch('getBlogs', 'blogsList', { force:true }))
     Store.dispatch(usersApiSlice.util.prefetch('getUsers', 'usersList', { force:true }))
+    Store.dispatch(usersApiSlice.util.prefetch('getUsers', 'usersList', { force:true }))
+    
   }, [])
 
   return <Outlet/>

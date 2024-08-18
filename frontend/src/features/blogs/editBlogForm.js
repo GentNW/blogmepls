@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSave } from "@fortawesome/free-solid-svg-icons"
 
-const TITLE_REGEX = /^[A-z]{3,20}$/
+const TITLE_REGEX = /^[A-z ]{3,30}$/
 const TEXT_REGEX = /^[A-z0-9,.:!@#$%\n ]{3,1000}$/
 
 

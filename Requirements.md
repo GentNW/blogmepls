@@ -3,7 +3,7 @@
 1. [x] Create,read,update & delete for data (must be dynamic to be able to be used for any data)
 2. [x] Provide a home page before login
 3. [x] Login function with username & password
-4. [ ] Sign up function
+4. [x] Sign up function
 5. [ ] each blog post is shown on the account profile with the number of blog posts known to the user
 6. [x] Provide a logout function
 7. [x] Blogs have a creation page

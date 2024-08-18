@@ -9,7 +9,7 @@ const Public = () => {
                     <h1 className='dash-header__title'>Welcome to blogmepls!</h1>
                     <nav className='dash-header__nav'>
                         <span className=""><Link to="/login">Login</Link></span>
-                        <span classname=""><Link to="/new">Sign up</Link></span>
+                        <span classname=""><Link to="/register">Sign up</Link></span>
                     </nav>
                 </div>
             </header>

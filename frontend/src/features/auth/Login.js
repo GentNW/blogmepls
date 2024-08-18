@@ -38,8 +38,10 @@ const Login = () => {
   const handleSubmit  = async (e) => {
     e.preventDefault()
     try{
-      const { accessToken } = await login({ username,password }).unwrap()
+      const { accessToken } = await login({ username,password}).unwrap()
+      //console.log({accessToken})
       dispatch(setCredentials({ accessToken }))
+      
       setUsername('')
       setPassword('')
       navigate('/dash')

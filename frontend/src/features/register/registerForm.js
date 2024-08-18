@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react"
-import { useAddNewUsersMutation } from "./usersApiSlice"
+import { useAddNewUsersMutation } from "./RegisterApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSave } from "@fortawesome/free-solid-svg-icons"
 import { ROLES } from "../../config/roles"
 
 const USER_REGEX = /^[A-z_]{3,20}$/
-const PWD_REGEX = /^[A-z0-9!_@#$%]{4,12}$/
+const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
 
-const NewUserForm = () => {
+const RegisterUserForm = () => {
     
-    const [AddNewUsers, {
+    const [AddNewUser, {
         isLoading,
         isSuccess,
         isError,
@@ -58,8 +58,8 @@ const NewUserForm = () => {
     const onSaveUserClicked = async (e) => {
         e.preventDefault()
         if(canSave){
-            
-            await AddNewUsers({ username, password, roles })
+            console.log({username},{password})
+            await AddNewUser({ username, password })
         }
     }
 
@@ -86,7 +86,7 @@ const NewUserForm = () => {
             
             <form className="form" onSubmit={onSaveUserClicked}>
                 <div className="form__title-row">
-                    <h2>New User</h2>
+                    <h2>New Register</h2>
                     <div className="form__action-buttons">
                         <button
                             className="icon-button"
@@ -140,4 +140,4 @@ const NewUserForm = () => {
     return content
 }
 
-export default NewUserForm
+export default RegisterUserForm

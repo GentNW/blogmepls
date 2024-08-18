@@ -6,19 +6,20 @@ const baseQuery = fetchBaseQuery({
     prepareHeaders: (headers, { getState }) => {
         //Obtaining the auth token if successful
         const token = getState().auth.token
-
+        console.log({token})
         //setting auth header
         if(token){
             headers.set("authorization",`Bearer ${token}`)
         }
+        
         return headers
     }
 })
-
 const baseQueryWithReauth = async (args,api,extraOptions) =>{
 
+    //console.log(args)
+    //console.log(api)
     let result = await baseQuery(args,api,extraOptions)
-
     if(result?.error?.status === 403){
         console.log('sending Refresh token')
 

@@ -12,7 +12,7 @@ const DashFooter = () => {
     const { pathname } = useLocation()
 
     const onGoHomeClicked = () => navigate('/dash')
-    const onLoginClicked = () => navigate('/login')
+    //const onLoginClicked = () => navigate('/login')
 
 
     let goHomeButton = null
