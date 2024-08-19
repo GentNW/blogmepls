@@ -38,7 +38,7 @@ const NewUserForm = () => {
             setUsername('')
             setPassword('')
             setRoles([])
-            navigate('/')
+            navigate('/users')
         }
     }, [isSuccess, navigate])
 
@@ -118,7 +118,7 @@ const NewUserForm = () => {
                     onChange={onPasswordChange}
                 />
 
-                {/*<label className="form__label" htmlFor="roles">
+                <label className="form__label" htmlFor="roles">
                     ASSIGNED ROLES:
                 </label>
                 <select
@@ -131,7 +131,7 @@ const NewUserForm = () => {
                     onChange={onRolesChanged}
                 >
                     {options}
-                </select>*/}
+                </select>
                 
             </form>
         </>
