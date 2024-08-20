@@ -12,7 +12,7 @@
 10. [x] Blogs have a title,body,created & update dates
 11. [x] Provide a welcome page after login
 12. [x] Only Admins can view all user settings and blogs
-13. [ ] Only Bloggers can view their own blogs
+13. [x] Only Bloggers can view their own blogs
 14. [ ] Desktop mode is important but should be available in mobile
 15. [ ] Search bar for blogs
 16. [ ] List display as a search result
