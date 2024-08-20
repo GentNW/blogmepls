@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { useAddNewBlogsMutation } from "./blogsApiSlice"
-import { useGetUsersQuery } from "../users/usersApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSave } from "@fortawesome/free-solid-svg-icons"
@@ -11,7 +10,7 @@ const TEXT_REGEX = /^[A-z0-9,.:!@#$%\n ]{3,1000}$/
 
 
 const NewBlogForm = ({users}) => {
-    const {id,username} = useAuth()
+    const {id} = useAuth()
     const [AddNewBlogs, {
         isLoading,
         isSuccess,
@@ -22,10 +21,7 @@ const NewBlogForm = ({users}) => {
     const author = id
     
     const navigate = useNavigate()
-    
-    
-    const [userID,setUserID]= useState('')
-    const [validUserID, setValidUserID] = useState(false)
+
     const [title, setTitle] = useState('')
     const [validTitle, setValidTitle] = useState(false)
     const [textContent, setTextContent] = useState('')
@@ -45,7 +41,6 @@ const NewBlogForm = ({users}) => {
     
     useEffect(() =>{
         if(isSuccess){
-            setUserID('')
             setTitle('')
             setTextContent('')
             navigate('/dash/blogs')
@@ -68,7 +63,6 @@ const NewBlogForm = ({users}) => {
         }
     }
     const errClass = isError ? "errmsg" : "offscreen"
-    const validUserIDClass = !validUserID ? 'form_input--incomplete' : ''
     const validTitleClass = !validTitle ? 'form_input--incomplete' : ''
     const validTextClass = !validText ? 'form_input--incomplete' : ''
     const content = (

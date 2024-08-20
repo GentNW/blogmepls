@@ -3,7 +3,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const blogSchema = new mongoose.Schema(
     {
-        user: {
+        author: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: 'users'

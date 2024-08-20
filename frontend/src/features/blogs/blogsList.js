@@ -4,8 +4,7 @@ import Blog  from './Blog'
 import useAuth from '../../hooks/useAuth'
 const BlogsList = () => {
 
-  const { username, isBlogger, isAdmin} = useAuth()
-
+  const {id ,isAdmin} = useAuth()
   const {
     data: blogs,
     isLoading,
@@ -32,10 +31,10 @@ const BlogsList = () => {
     const { ids, entities } = blogs
 
     let filteredIds
-    if(isBlogger||isAdmin){
+    if(isAdmin){
       filteredIds = [...ids]
     } else{
-      filteredIds = ids.filter(blogId => entities[blogId].username === username)
+      filteredIds = ids.filter(blogId => entities[blogId].author === id)
     }
 
 
