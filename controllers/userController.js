@@ -44,8 +44,9 @@ const createNewUser = asyncHandler (async(req,res) => {
 
     //create & store new user
     const user = await User.create(userObject)
+    
     if(user){ //created
-        res.status(201).json({message:`New User ${username} created`})
+        res.status(201).json({message:`New User ${username} created and has an ID of ${User._id}`})
     } else {
         res.status(400).json({message:'invalid user data received'})
     }
@@ -65,7 +66,7 @@ const updateUser = asyncHandler (async(req,res) => {
     }
 
     const user = await User.findById(id).exec()
-
+    
     if(!user)
     {
         return res.status(400).json({ message: 'User not found'})
@@ -92,10 +93,10 @@ const updateUser = asyncHandler (async(req,res) => {
     }
 
     user.roles = roles
-
+    user.id = id
     const updatedUser = await user.save()
 
-    res.json({ message: `${updatedUser.username} updated`})
+    res.json({ message: `${updatedUser.username} updated with id ${user.id}`})
 })
 
 //@desc Delete a user
