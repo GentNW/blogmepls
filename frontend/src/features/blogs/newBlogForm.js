@@ -4,13 +4,14 @@ import { useGetUsersQuery } from "../users/usersApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSave } from "@fortawesome/free-solid-svg-icons"
+import useAuth from '../../hooks/useAuth'
 
 const TITLE_REGEX = /^[A-z ]{3,20}$/
 const TEXT_REGEX = /^[A-z0-9,.:!@#$%\n ]{3,1000}$/
 
 
 const NewBlogForm = ({users}) => {
-    
+    const {id,username} = useAuth()
     const [AddNewBlogs, {
         isLoading,
         isSuccess,
@@ -18,7 +19,8 @@ const NewBlogForm = ({users}) => {
         error
         }] = useAddNewBlogsMutation()
 
-
+    const author = id
+    
     const navigate = useNavigate()
     
     
@@ -54,12 +56,15 @@ const NewBlogForm = ({users}) => {
 
     const onTextContentChange = e => setTextContent(e.target.value)
 
+
     const canSave = [validTitle,validText].every(Boolean) && !isLoading
 
     const onSaveUserClicked = async (e) => {
         e.preventDefault()
         if(canSave){
-            await AddNewBlogs({userID, title, textContent})
+            console.log(id.type)
+            await AddNewBlogs({author, title, textContent})
+            
         }
     }
     const errClass = isError ? "errmsg" : "offscreen"
@@ -81,14 +86,14 @@ const NewBlogForm = ({users}) => {
                         >
                             <FontAwesomeIcon icon={faSave} />
                         </button>
-                        <p>{users._id}</p>
                     </div>
                 </div>
 
                 <label className="form__label" htmlFor="title">Title: <span className="nowrap">[5-15 chars]</span></label>
                 <input
                     className={`form_input ${validTitleClass}`}
-                    id="title"
+                    author
+="title"
                     name="title"
                     type="title"
                     value={title}
@@ -98,7 +103,8 @@ const NewBlogForm = ({users}) => {
                 <label className="form__label" htmlFor="text">Text: <span className="nowrap">[5-15 chars incl. !@#$%]</span></label>
                 <textarea
                   className={`form_input form__input--text ${validTextClass}`}
-                  id="text"
+                  author
+="text"
                   name="text"
                   type="text"
                   value={textContent}

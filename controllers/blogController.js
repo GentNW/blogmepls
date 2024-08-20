@@ -22,9 +22,9 @@ const getAllBlogs = asyncHandler (async (req,res) => {
 const createNewBlog = asyncHandler (async(req,res) => {
     //user's blog number variable should increase by 1 here
 
-    const {user ,title , textContent} = req.body
+    const {author ,title , textContent} = req.body
     //Confirm Data
-    if(!title, !textContent, !user)
+    if(!title, !textContent, !author)
     {
         return res.status(400).json({ message:'All fields are required' })
     }
@@ -36,7 +36,7 @@ const createNewBlog = asyncHandler (async(req,res) => {
         return res.status(409).json({ message:'Duplicate title '})
     }
 
-    const blogObject = {user, title, textContent}
+    const blogObject = {author, title, textContent}
 
 
     //create & store the new blog
